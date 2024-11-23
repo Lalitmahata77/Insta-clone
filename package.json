@@ -4,9 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "fullstack": "concurrently\"npm run backend\" \"npm run frontend\"",
     "backend": "nodemon api/index.js",
-    "frontend": "cd frontend && npm run dev",
-    "fullstack": "concurrently\"npm run backend\" \"npm run frontend\""
+    "frontend": "cd frontend && npm run dev"
   },
   "author": "",
   "license": "ISC",

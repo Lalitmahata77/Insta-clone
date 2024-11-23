@@ -10,7 +10,7 @@ router.route("/userpost/all").get(authenticate,getUserPost)
 router.route("/:id/like").post(authenticate,likePost)
 router.route("/:id/dislike").post(authenticate,dislikePost)
 router.route("/:id/addcomment").post(authenticate,addComment)
-router.route("/:id/comment/all").post(authenticate,getCommentsOfPost)
+router.route("/:id/comment/all").get(authenticate,getCommentsOfPost)
 router.route("/delete/:id").delete(authenticate,deletePost)
 router.route("/:id/bookmark").get(authenticate,bookmarkPost)
 export default router
