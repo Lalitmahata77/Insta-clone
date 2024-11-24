@@ -20,6 +20,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/userApiSlice";
 import { logout } from "../../redux/feature/auth/authSlice"
 import { Avatar, AvatarFallback ,AvatarImage} from "@/components/ui/avatar";
+import CratePost from "@/components/CratePost";
 
 // import FavoritesCount from "../../pages/products/FavoritesCount";
 
@@ -119,7 +120,8 @@ const Navigation = () => {
           to="/create"
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
-          <MdCreateNewFolder className="mr-2 mt-[2rem]" size={26} />
+          <MdCreateNewFolder className="mr-2 mt-[2rem]"  size={26} />
+           
           <span className="hidden nav-item-name mt-[2rem]">Create</span>{" "}
         </Link>
       </div>

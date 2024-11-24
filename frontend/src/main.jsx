@@ -8,6 +8,8 @@ import store from './redux/store.js'
 import Signup from './pages/auth/Signup.jsx'
 import Login from './pages/auth/Login.jsx'
 import Home from './Home.jsx'
+import PrivateRoute from './components/PrivateRoute'
+import CratePost from './components/CratePost'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +19,9 @@ const router = createBrowserRouter(
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/login' element={<Login/>}/>
 
+<Route path='' element={<PrivateRoute/>}>
+<Route path='/create' element={<CratePost/>}/>
+</Route>
 
     </Route>
   )
