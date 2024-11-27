@@ -73,9 +73,9 @@ export const logout = asyncHandler(async(req,res,next)=>{
 
 export const getProfile = asyncHandler(async(req,res,next)=>{
    try {
-     const {id} = req.params;
-     await Post.find({})
-     const user = await User.findById(id).populate({path:'posts', createdAt:-1}).populate('bookmarks');
+    //  const {id} = req.params;
+    //  await Post.find({})
+     const user = await User.findById(req.user._id).populate({path:'posts', createdAt:-1}).populate('bookmarks');
      res.status(200).json(user)
    } catch (error) {
     console.log(error);

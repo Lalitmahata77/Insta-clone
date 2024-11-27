@@ -4,17 +4,20 @@ import { Dialog, DialogContent, DialogHeader } from "./ui/dialog"
 import { Textarea } from "./ui/textarea"
 import { Button } from "./ui/button"
 import { readFileAsDataUrl } from "@/lib/utils"
-import { toast } from "react-toastify"
+import {toast} from "sonner"
 import {useCreatePostMutation} from "../redux/api/postApiSlice"
-import { useNavigate } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const CratePost = () => {
+    
     const imageRef = useRef()
     const[file, setFile] = useState("");
     const[caption, setCaption] = useState("")
     const [imagePreview, setImagePreview] = useState("")
     const navigate = useNavigate()
-const[createpost] = useCreatePostMutation()
+   const {userInfo} = useSelector((state)=>state.auth)
+const[createpost,{isLoading}] = useCreatePostMutation()
     const fileChangeHandler = async(e)=>{
         const file = e.target.files?.[0]
         if (file) {
@@ -40,7 +43,7 @@ const[createpost] = useCreatePostMutation()
         }
         } catch (error) {
             console.log(error);
-            toast.error("Post crate failed. Try again..")
+            toast.error("Post create failed. Try again...")
         }
     }
   return (
@@ -49,12 +52,12 @@ const[createpost] = useCreatePostMutation()
 <DialogHeader className=" text-center font-semibold">Create New Post</DialogHeader>
 <div className=" flex gap-3 items-center mt-5">
 <Avatar>
-    <AvatarImage src="" alt="img"/>
+    <AvatarImage src={userInfo?.profilePicture} alt="img"/>
     <AvatarFallback>CN</AvatarFallback>
 </Avatar>
 <div className=" p-6">
-    <h1 className=" font-semibold text-xs">Username</h1>
-    <span className=" text-gray-600 text-xs">Bio here......</span>
+    <h1 className=" font-semibold text-xs">{userInfo?.username}</h1>
+    <span className=" text-gray-600 text-xs">{userInfo?.bio}</span>
 </div>
 </div>
 <Textarea className=" focus-visible:ring-transparent border-none" placeholder="Write a caption...." value={caption} onChange={(e)=>setCaption(e.target.value)}/>
@@ -70,7 +73,9 @@ const[createpost] = useCreatePostMutation()
 
 {
     imagePreview && (
-        <Button className=" w-full mt-4" type="submit" onClick={handleSubmit}>Post</Button>
+        <Button className=" w-full mt-4" type="submit" onClick={handleSubmit}>{
+            isLoading ? "Please wait" : "Post"
+        }</Button>
     )
 }
 

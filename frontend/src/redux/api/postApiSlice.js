@@ -22,8 +22,8 @@ const postApiSlice = apiSlice.injectEndpoints({
             })
         }),
         addCommennts : builder.mutation({
-            query : ({data,id})=>({
-                url : `${POST_URL}/${id}/addcomment`,
+            query : (data)=>({
+                url : `${POST_URL}/${data.postId}/addcomment`,
                 method : "POST",
                 body : data
             })

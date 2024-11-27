@@ -1,13 +1,18 @@
 import React from 'react'
 import Post from './Post'
+
+import {useGetAllPostsQuery} from "../redux/api/postApiSlice"
 // import { useSelector } from 'react-redux'
 
 const Posts = () => {
-//   const {posts} = useSelector((state)=>state.post);
+const {data} = useGetAllPostsQuery()
+  // const {posts} = useSelector()
+  console.log(data);
+  
   return (
     <div>
         {
-            [1].map((post) => <Post key={post._id} post={post}/>)
+           data?.posts?.map((post) => <Post key={post._id} post={post}/>)
         }
     </div>
   )

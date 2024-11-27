@@ -197,7 +197,7 @@ export const deletePost = asyncHandler(async(req,res,next)=>{
         if(!post) return res.status(400).json({message:"Post not found"})
           
             //check if the logged in user is the owner of the post
-            if(post.author._id.toString() !== authorId) return res.status(403).json({message:"Unauthorised"})
+            if(post.author._id.toString() !== authorId.toString()) return res.status(403).json({message:"Unauthorised"})
                 //delete post
             await Post.findByIdAndDelete(postId)
             //remove the post id from the user's post
