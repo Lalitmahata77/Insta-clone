@@ -5,6 +5,7 @@ const initialState = {
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null,
     suggestedUsers:[],
+    selectedUser:null
 };
 
 const authSlice = createSlice({
@@ -28,9 +29,12 @@ const authSlice = createSlice({
   setAuthUser:(state,action) => {
     state.user = action.payload;
 },
+SetSelectedUser:(state,action)=>{
+  state.selectedUser = action.payload
+}
   },
 });
 
-export const { setCredentials, logout, setSuggestedUsers,setAuthUser } = authSlice.actions;
+export const { setCredentials, logout, setSuggestedUsers,setAuthUser,SetSelectedUser } = authSlice.actions;
 
 export default authSlice.reducer;

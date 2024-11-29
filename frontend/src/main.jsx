@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute'
 import CratePost from './components/CratePost'
 import Profile from './components/Profile'
 import EditProfile from './components/EditProfile'
+import ChatPage from './components/ChatPage'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
 <Route path='/create' element={<CratePost/>}/>
 <Route path="/profile/:id" element={<Profile/>}/>
 <Route path='/account/edit' element={<EditProfile/>}/>
+<Route path='/message' element={<ChatPage/>}/>
 </Route>
 
     </Route>
